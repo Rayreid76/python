@@ -1,0 +1,2 @@
+This python file is a repository of programming assignments for the learning of python.
+Each weeks assignments are placed in the each weeks file.
