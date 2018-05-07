@@ -24,7 +24,7 @@ input{
     margin-left: 42px
 }
 #dojo{
-    margin-left: 27px;
+    margin-left: 29px;
 }
 #comm{
     margin-left: 7px;
@@ -33,4 +33,7 @@ input{
 }
 #sub{
     margin: 10px;
+}
+#lang{
+    margin-left: 4px;
 }

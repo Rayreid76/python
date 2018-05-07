@@ -7,12 +7,11 @@ def index():
 
 @app.route('/results', methods=['POST'])
 def create_results():
-    print("results")
     name = request.form['name']
     location = request.form['location']
     language = request.form['lang']
     comments = request.form['comments']
-    return render_template('results.html')
+    return render_template('results.html', name = request.form['name'], location = request.form['location'], language = request.form['lang'], comments = request.form['comments'] )
 
 
 app.run(debug=True)
