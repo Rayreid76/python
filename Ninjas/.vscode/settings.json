@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "${workspaceFolder}\\ninja\\Scripts\\python.exe"
+    "python.pythonPath": "${workspaceFolder}\\ninja\\Scripts\\python.exe",
+    "git.ignoreLimitWarning": true,
+    "python.linting.pylintEnabled": false
 }
