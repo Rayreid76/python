@@ -1,0 +1,3 @@
+{
+    "python.pythonPath": "${workspaceFolder}\\ninja\\Scripts\\python.exe"
+}
