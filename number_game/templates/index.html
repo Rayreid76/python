@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Numder Game</title>
+</head>
+<body>
+    <div>
+        <h1>Guest the Number</h1>
+        <form action="/game" method="post">
+            Enter number: <input type="text" name="number"><br>
+            <input type="submit" class="submit">
+        </form>
+        <h3>Your Result: {{result}}</h3>
+        <a href="/clear">reset</a>
+        
+    </div>
+</body>
+</html>
