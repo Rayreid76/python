@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "${workspaceFolder}\\dojo_s\\Scripts\\python.exe",
+    "python.linting.pylintEnabled": false
+}

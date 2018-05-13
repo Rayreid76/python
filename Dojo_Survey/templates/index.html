@@ -17,8 +17,14 @@
             <p>Favorite Language:</p><input type="text" name="lang" id="lang">
             <P>Comments (optional)</P><textarea name="comments" id="comm" cols="58" rows="10"></textarea>
             <input type="submit" value="Submit" id="sub">
-
         </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="mes">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     </div>
     
 </body>
