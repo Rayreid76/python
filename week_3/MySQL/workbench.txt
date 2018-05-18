@@ -1,0 +1,46 @@
+select * from users;
+
+
+
+select * from tweets;
+
+
+
+select user_id from faves;
+
+
+
+select first_name, last_name from users;
+
+
+
+select last_name from users
+where id < 5;
+
+
+
+select * from users
+where last_name like "%r";
+
+
+
+insert into users(first_name, last_name, handle, birthday, created_at, updated_at)
+
+values('Tom', 'Littel', 'hotstuff1256', '1911-01-12', NOW(), NOW());
+
+
+
+select * from users;
+
+
+
+delete from users where id = 6;
+
+
+select * from users;
+
+
+
+select * from tweets
+
+join users on users.id = tweets.user_id;
