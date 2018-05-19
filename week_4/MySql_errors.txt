@@ -1,0 +1,8 @@
+(_mysql_exceptions.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1' (10061)")
+	I had changed the port setting to 3307 to get the error. to fix just change port to the flask open port of 3306.
+
+OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'rooting'@'localhost' (using password: YES)")
+	i changed the lenght of the user string. to fix use correct user info for Mysql.
+
+ValueError: invalid literal for int() with base 10: '3306, 3307'
+	tried to add second port.
