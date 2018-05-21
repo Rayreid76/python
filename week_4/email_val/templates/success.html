@@ -8,6 +8,11 @@
 </head>
 <body>
     <h1>Success</h1>
+    {% for email in all_emails:%}
+        <p>Email: {{email['email']}}</p>
+        <p>Created at: {{email['created_at']}}</p>
+        <p>Updated at: {{email['updared_at']}}</p>
+    {%endfor%}
     
 </body>
 </html>

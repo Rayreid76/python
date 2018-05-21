@@ -1,14 +1,28 @@
-from flask import Flask, redirect, render_template, session
+from flask import Flask, redirect, render_template, session, request
+from mysqlconnection import MySQLConnector
 app = Flask(__name__)
 app.secret_key = 'Telamondo'
+mysql = MySQLConnector(app, 'EmailDB')
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
+
+
 @app.route('/email', methods=['POST'])
-def email_val():
+def create():
+    query = "INSERT INTO emails (email, created_at, updated_at) VALUES (:email, NOW(), NOW())"
+    data = {
+             'email': request.form['email'],
+           }
+    mysql.query_db(query, data)
     return render_template('success.html')
+def email_val():
+    quary = "SELECT * FROM EMAILS"
+    emails = mysql.query_db(quary)
+    print(emails)
+    return render_template('success.html', all_emails= emails)
 
 app.run(debug=True)
 
