@@ -8,10 +8,18 @@
 </head>
 <body>
     <h1>Success</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     {% for email in all_emails:%}
         <p>Email: {{email['email']}}</p>
         <p>Created at: {{email['created_at']}}</p>
         <p>Updated at: {{email['updared_at']}}</p>
+        <a href="/success/delete/{{email.id}}">Delete</a>
     {%endfor%}
     
 </body>

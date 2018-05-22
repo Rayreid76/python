@@ -8,8 +8,15 @@
 </head>
 <body>
     <h2>Email Validatoin</h2>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <form action="email" method="POST">
-        <p>Email Address</p><input type="text"><br>
+        <p>Email Address</p><input type="text" name="input"><br>
         <input type="submit" value="Submit Email">
     </form>
     
