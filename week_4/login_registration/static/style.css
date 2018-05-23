@@ -10,7 +10,12 @@ p{
 input{
     margin: 5px 0px 5px 0px;
 }
-.list{
-    display: inline;
-    background-color: yellowgreen;
+
+.page{
+    display: inline-block;
+    background-color: beige;
+    margin: 0px;
+}
+.page p{
+    width: 100%
 }

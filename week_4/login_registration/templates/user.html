@@ -15,9 +15,13 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <p class="list">
-        {{all_user}}
-    </p>
-    
+    <div class="page">
+    {% for user in all_user:%}
+        <p>Name: {{user['first_name']}} {{user['last_name']}}</p>
+        <p>Username: {{user['user_name']}}</p>
+        <p>Email: {{user['email']}}</p>
+        
+    {%endfor%}
+    </div>
 </body>
 </html>
