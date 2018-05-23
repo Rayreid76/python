@@ -10,3 +10,7 @@ p{
 input{
     margin: 5px 0px 5px 0px;
 }
+.list{
+    display: inline;
+    background-color: yellowgreen;
+}

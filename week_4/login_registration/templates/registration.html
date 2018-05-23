@@ -9,13 +9,21 @@
 </head>
 <body>
     <h2>Registration</h2>
-    <form action="" method="post">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <h3>{{message}}</h3>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/registration" method="post">
         <p>User Name:</p><input type="text" name="uname"><br>
+        <p>Email:</p><input type="text" name="email"><br>
         <p>Password:</p><input type="text" name="pword"><br>
         <p>First Name:</p><input type="text" name="fname"><br>
         <p>Last Name:</p><input type="text" name="lname"><br>
         <input type="submit" value="Submit">
     </form>
-    
+    <a href="/">Click to login</a>
 </body>
 </html>
