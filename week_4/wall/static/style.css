@@ -1,0 +1,21 @@
+div{
+    display: inline-block;
+    width: 600px;
+    height: 200px;
+    margin: 10% 35%;
+}
+fieldset{
+    display: inline-block;
+    vertical-align: top;
+    height: 174px;
+    background-color: bisque;
+}
+fieldset input{
+    margin: 5px 0px 5px 0px;
+}
+.login{
+    margin: 70px 0px 0px 46px
+}
+.reg{
+    margin: 37px 0px 0px 35px;
+}
