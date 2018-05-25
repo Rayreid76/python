@@ -4,9 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="static/style.css">
     <title>The Wall</title>
 </head>
 <body>
-    <h1>Success</h1>
+    <div class="header">
+        <div>
+            <h1>Ray's Wall</h1>
+        </div>
+        <div>
+            <h3>Welcome {{user.name}}!</h3>
+            <a href="/logoff">Log off</a>
+        </div>
+    </div>
+    <div class="post">
+        <h3>Post a message</h3>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="red">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/wall/post" method="post">
+            <textarea name="message" id="post" cols="100" rows="10"></textarea>
+            <input type="submit" value="Post a message">
+        </form>
+    </div>
+    <div class="message">
+        <h1>Posts</h1>
+        <ul style="list-style-type: none;">
+        {% for post in posts %}
+            {% if post.post_id == session["user_id"] %}
+            <li>
+                <p>{{post.name}}:</p>
+                <p>{{post.message}}</p>
+                <ul style="list-style-type: none;"><h3>Comments:</h3>
+                    {% for comment in comments%}
+                        {% if comment.post_id == post.users_id %}
+                        <li>
+                            <h4>{{comment.name}}</h4>
+                            <p>{{comment.comment}}</p>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <form action="/wall/{{post.id}}" method="post">
+                    <textarea name="comment" id="com" cols="30" rows="3"></textarea>
+                    <input type="submit" value="Comments">
+                </form>
+            </li>
+            {% endif%}
+        {% endfor %}
+        </ul>
+        <ul style="list-style-type: none;">
+            {% for post in posts %}
+                {% if not post.post_id == session["user_id"] %}
+                <li>
+                    <p>{{post.name}}:</p>
+                    <p>{{post.message}}</p>
+                    <ul style="list-style-type: none;"><h3>Comments:</h3>
+                        {% for comment in comments%}
+                            {% if comment.post_id == post.post_id %}
+                            <li>
+                                <h4>{{comment.name}}</h4>
+                                <p>{{comment.comment}}</p>
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <form action="/wall/{{post.post_id}}" method="post">
+                        <textarea name="comment" id="com" cols="30" rows="3"></textarea>
+                        <input type="submit" value="Comments">
+                    </form>
+                </li>
+                {% endif%}
+            {% endfor %}
+    </div>
 </body>
 </html>

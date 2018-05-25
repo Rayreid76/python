@@ -1,4 +1,7 @@
-div{
+*{
+    font-family: 'Times New Roman', Times, serif;
+}
+.index{
     display: inline-block;
     width: 600px;
     height: 200px;
@@ -18,4 +21,34 @@ fieldset input{
 }
 .reg{
     margin: 37px 0px 0px 35px;
+}
+.header{
+    display: inline-block;
+    vertical-align: top;
+}
+.header div{
+    display: inline-block;
+    vertical-align: top;
+    width: 500px;
+}
+.header div h1{
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    margin: 5px;
+}
+.header div h3{
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    margin: 1px;
+}
+.header a{
+    margin: 10px;
+}
+#post{
+    display: inline;
+}
+.red{
+    color: red;
 }
