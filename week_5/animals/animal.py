@@ -28,7 +28,7 @@ class Dog(Animal):
         return self
 
 class Dragon(Animal):
-    def __init__(self, name, health):
+    def __init__(self, name):
         self.name = name
         self.health = 170
     def Fly(self, id):
@@ -39,7 +39,7 @@ class Dragon(Animal):
 
 animal1 = Animal('Zebra', 125)
 animal2 = Dog('dog')
-animal3 = Dragon('toddy',0)
+animal3 = Dragon('toddy')
 animal1.Walk(3).Run(2).display()
 animal2.Walk(3).Run(2).Pet(1).display()
 animal3.Walk(3).Run(2).Fly(1).display()
