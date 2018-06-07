@@ -1,0 +1,8 @@
+div{
+    display: inline-block;
+    margin: 15px 0px 0px 35%;
+    background-color: rgb(142, 160, 170);
+    color: aliceblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
