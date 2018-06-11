@@ -4,6 +4,7 @@ def index(request):
     return render(request,"survey/index.html")
 
 def results(request):
+    return render(request, "survey/results.html")
     
 
 # Create your views here.
