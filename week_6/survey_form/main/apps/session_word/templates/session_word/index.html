@@ -8,6 +8,13 @@
 </head>
 <body>
     <h1>Session Word</h1>
-    
+    <form action="create" method="post">
+        {% csrf_token %}
+        Word: <input name="name" type="text" /> <br />
+        <input checked="checked" name="color" type="radio" value="red" />Red <input name="color" type="radio" value="green" /> Green<input name="color" type="radio" value="blue" /> Blue<br />
+        <input type="submit" value="Submit" />
+    </form><hr>
+    <p style="color: {{request.session.color}}">{{request.session.name}}</p>
+
 </body>
 </html>
