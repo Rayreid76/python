@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.survey.urls'))
+    url(r'^survey/', include('apps.survey.urls')),
+    url(r'^session_word/', include('apps.session_word.urls')),
 ]
