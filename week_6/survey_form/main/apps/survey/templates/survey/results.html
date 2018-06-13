@@ -10,10 +10,10 @@
 </head>
 <body>
     <h1>Dojo survey results</h1>
-    <p>Name: </p>
-    <p>Dojo Location: </p>
-    <p>Favorite Language:  </p>
-    <p>Comments:  </p>
-    
+    <p>Name: {{request.session.name}}</p>
+    <p>Dojo Location: {{request.session.location}}</p>
+    <p>Favorite Language:  {{request.session.lang}}</p>
+    <p>Comments:  {{request.session.comments}}</p>
+        
 </body>
 </html>
