@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Check Out Cart</h1>
+    <p>{{request.session.product_id}}</p>
+    <p>{{request.session.quantity}}</p>
+    <form action="sales" method="get">
+        <input type="submit" value="Retutn">
+    </form>
+</body>
+</html>
