@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ninja Gold</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{url_for('static', filename='style.css')}}" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="head">
+            <h3>Your Gold:</h3>
+            <form action="tally" method="post">
+                <textarea name="" id="" cols="15" rows="1">{{tally}} gold pieces</textarea>
+            </form>
+        </div>
+        <div class="center">
+            <div>
+                <h3>Farm</h3>
+                <p>(earns 10-20 golds)</p>
+                <form action="/process_farm" method="post">
+                    <input type="hidden" name="building" value="farm" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>
+            </div>
+            <div>
+                <h3>Cave</h3>
+                <p>(earns 5-10 golds)</p>
+                <form action="/process_cave" method="post">
+                    <input type="hidden" name="building" value="cave" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>                  
+            </div>
+            <div>
+                <h3>House</h3>
+                <p>(earns 2-5 golds)</p>
+                <form action="/process_house" method="post">
+                    <input type="hidden" name="building" value="house" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>      
+            </div>
+            <div>
+                <h3>Casino</h3>
+                <p>(earns/takes 0-50 golds)</p>
+                <form action="/process_casino" method="post">
+                    <input type="hidden" name="building" value="casino" />
+                    <input type="submit" value="Find Gold!"/>
+                </form>  
+            </div>
+        </div>
+        <div class="bottom">
+            <p>Activity:</p>
+            <form action="activity" method="post">
+                <textarea name="result" id="results" cols="105" rows="10">You have collected {{activity}} gold pieces</textarea>
+            </form>
+
+        </div>
+    </div>
+    
+</body>
+</html>

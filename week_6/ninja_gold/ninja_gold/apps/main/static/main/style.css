@@ -1,0 +1,37 @@
+.wrapper{
+    width: 960px;
+    background-color: rgba(143, 48, 48, 0.678);
+    vertical-align: top;
+}
+.head{    
+    vertical-align: top;
+    padding: 10px;
+}
+.head h3{
+    display: inline;
+    vertical-align: top;
+}
+.center{
+    padding: 10px;
+}
+.center div{
+    display: inline-block;
+    vertical-align: top;
+    width: 190px;
+    height: 190px;
+    background-color: rgb(177, 189, 149);
+    margin: 0px 10px 0px 10px;
+
+}
+.center div h3{
+    margin-left: 35%;
+}
+.center div p{
+    margin-left: 10%;
+}
+.center div form{
+    margin-left: 45px;
+}
+.bottom{
+    padding: 20px;
+}
