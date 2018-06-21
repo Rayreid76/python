@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit</title>
+</head>
+<body>
+    <h1>User: {{user.id}}</h1>
+    <form action="change/" method="post">
+        {% csrf_token %}
+       <p>{{user.fullname}}</p> <input type="text" name="name" placeholder="Change Name">
+        <p>{{user.email}}</p><input type="text" name="email" placeholder="Change Email"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+
+
+    <a href="/">Return</a>
+</body>
+</html>

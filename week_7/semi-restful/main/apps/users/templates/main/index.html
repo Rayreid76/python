@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users</title>
+</head>
+<body>
+    <h1>Users</h1>
+    <table class="user">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Full Name</th>
+                <th>Created at</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        {% for x in user%}
+        <tbody>
+            <tr>
+                <td>{{x.id}}</td><td>{{x.email}}</td><td><a href="show/{{x.id}}">{{x.fullname}}</a></td><td>{{x.created_at}}</td><td><a href="show/{{x.id}}">Show</a> | <a href="{{x.id}}/edit">Edit</a> | <a href="{{x.id}}/delete">Delete</a></td></tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <a href="user/create/">Add a new user</a>
+</body>
+</html>
