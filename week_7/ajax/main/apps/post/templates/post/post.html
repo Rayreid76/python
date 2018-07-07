@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Your Post</title>
+</head>
+<body>
+    <h1>Your Post</h1>
+    <div id="post">
+    </div>
+    <div id="form">
+        <form action="placePost" method="post" class="my_post" id="createpost">
+            {% csrf_token %}
+            <textarea name="post_area" placeholder="Enter post here" cols="30" rows="10"></textarea><br>
+            <input type="submit" value="Post!">
+        </form>
+    </div>
+    <script>
+        $('createpost').submit(function(e){
+            e.preventDefault()
+            console.log('came here!!!')
+            $.ajax({
+                url: $(this).attr('action'),
+                method: 'post',
+                data: $(this).sterialize(),
+                seccess: function(serverResponse)
+                $('#post').html(serverResponse)
+            });
+        })
+    </script>
+</body>
+</html>
