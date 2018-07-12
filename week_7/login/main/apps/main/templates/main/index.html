@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .register{
+            display: inline-block;
+        }
+        .login{
+            display: inline-block;
+            vertical-align: top;
+        }
+        .login fieldset{
+            height: 183px;
+        }
+        input{
+            margin: 5px;
+        }
+    </style>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login & Registration</h1>
+    <div class="register">
+        <fieldset >
+            <legend>Register</legend>
+            <form action="register/" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="First Name" name="first_name"><br>
+                <input type="text" placeholder="Last Name" name="last_name"><br>
+                <input type="text" placeholder="email" name="email"><br>
+                <input type="text" placeholder="password" name="password"><br>
+                <input type="submit" value="Register">
+            </form>
+        </fieldset>
+    </div>
+    <div class="login">
+        <fieldset >
+            <legend>Login</legend>
+            <form action="login/" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="email" name="email"><br>
+                <input type="text" placeholder="password" name="password"><br>
+                <input type="submit" value="Login">
+            </form>
+        </fieldset>
+    </div>
+</body>
+</html>
