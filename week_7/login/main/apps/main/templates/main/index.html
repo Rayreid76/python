@@ -23,6 +23,13 @@
 </head>
 <body>
     <h1>Login & Registration</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% end if %}
     <div class="register">
         <fieldset >
             <legend>Register</legend>

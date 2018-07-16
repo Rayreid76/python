@@ -15,38 +15,14 @@ def register(request):
     email = request.POST["email"]
     password = request.POST["password"]
     cpassword = request.POST["confirm_password"]
-    valid = True
-    if len(fname) <= 3:
-        valid = False
-        print ("Error first name is to short")
-    elif fname.isalpha() == False:
-        valid = False
-        print("Error only letters")
-    if len(lname) <= 3:
-        valid = False
-        print ("Error last name is to short")
-    elif lname.isalpha() == False:
-        valid = False
-        print("Error only letters")
-    if email != "":
-        try:
-            validate_email(email)
-        except ValidationError as e:
-            valid = False
-            print "Error not valid email"
-        else:
-            print "hooray! email is valid"
-    if len(password) <= 8:
-        valid = False
-        print("Error password needs to be 8 characters")
-    if cpassword != password:
-        valid = False
-        print("Error passward does not match")
-    else:
+    errors = Users.objects.userValidation(fname, lname, email, password,cpassword)
+    if len(errors) == 0:
         Users.objects.create(first_name=fname, last_name=lname, email=email, password=password)
-    return redirect("/")
+        return redirect("/")
+    else: #add message to html
+        for message in errors:
+            message.error(request, message)
+        return redirect("/")
 
 def login(request):
     return redirect("/")
-
-    #r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$'
