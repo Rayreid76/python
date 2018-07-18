@@ -38,4 +38,7 @@ def login(request):
             messages.error(request, message)
         return redirect("/")
 def dashboard(request):
-    return HttpResponse("got to dashboard")
+    context = {
+        "user": Users.objects.get(id=request.session["id"]),
+    }
+    return render(request, "main/dashboard.html", context)
