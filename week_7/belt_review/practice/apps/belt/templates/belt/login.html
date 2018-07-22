@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'belt/log_style.css' %}" type="text/css">
+    <title>Belt Login</title>
+</head>
+<body>
+    <div class="bar">
+        <h2>Belt login</h2>
+        <p><a href="/">Home</a> | <a href="/register">Registure</a></p>
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="login_form">
+        <h3>Sign in:</h3>
+        <form action="/signin" method="post">
+            {% csrf_token%}
+            <p>Email address:</p>
+            <input type="text" name="email" placeholder="email">
+            <p>Password:</p>
+            <input type="text" name="password" placeholder="password"><br>
+            <input type="submit" value="Sign In" class="submit">
+        </form>
+        <a href="/register">Don't have an account? Register.</a>
+    </div>
+</body>
+</html>

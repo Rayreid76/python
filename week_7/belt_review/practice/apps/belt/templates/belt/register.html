@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'belt/reg_style.css' %}" type="text/css">
+    <title>Belt Registration</title>
+</head>
+<body>
+   <div class="bar">
+       <h2>Belt Registration</h2>
+       <p><a href="/">Home</a> | <a href="/login">Sign in</a></p>
+   </div>
+   {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+   <div class="reg_form">
+       <h3>Register:</h3>
+       <form action="/record" method="post">
+            {% csrf_token %}
+           <p>Email:</p>
+           <input type="text" name="email" placeholder="Email">
+           <p>First Name:</p>
+           <input type="text" name="fname" placeholder="First Name">
+           <p>Last Name:</p>
+           <input type="text" name="lname" placeholder="Last Name">
+           <p>Password:</p>
+           <input type="text" name="password" placeholder="Password">
+           <p>Password Confirmation:</p>
+           <input type="text" name="cpassword" placeholder="Password Confirmation"><br>
+           <input type="submit" value="Register" class="submit">
+       </form>
+       <a href="/login">Already have an account? Login</a>
+   </div> 
+</body>
+</html>

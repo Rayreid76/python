@@ -1,0 +1,21 @@
+.bar{
+    border-bottom: 1px darkgrey solid;
+    background: lightgray;
+}
+.bar h2{
+    display: inline-block;
+    margin: 10px 700px 5px 10px;
+}
+.bar p{
+    display: inline-block;
+    vertical-align: top;
+}
+.login_form{
+    margin: 10px;
+}
+.login_form p{
+    margin-bottom: 3px;
+}
+.submit{
+    margin: 5px 0px 10px 5px;
+}
