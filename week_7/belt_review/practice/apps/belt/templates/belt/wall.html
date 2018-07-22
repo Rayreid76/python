@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Wall</title>
+</head>
+<body>
+    <div class="bar">
+        <h2>Belt Dashboard</h2>
+        <p><a href="/dashboard">Dashboard</a> | <a href="/logout">Sign Out</a></p>
+    </div>
+    <h1>{{user.first_name}}'s wall</h1>
+    
+    <div class="posting">
+        <h3>Post</h3>
+        <form action="create_post/{{user.id}}" method="post">
+            {% csrf_token %}
+            <input type="text" name="posting" placeholder="Place your Post">
+            <input type="submit" value="Post">
+        </form>
+    </div>
+    <div class="posted">
+        <h3>History</h3>
+        <textarea name="posted" cols="50" rows="5">{{post.post}}</textarea>
+        <p>Posted at {{post.created_at}}</p>
+    </div>
+    
+</body>
+</html>

@@ -51,4 +51,19 @@ def dashboard(request):
         "everyone": Users.objects.all()
     }
     return render(request, "belt/dashboard.html", context)
+
+def logout(request):
+    request.session.clear()
+    return redirect("/login")
+
+def wall(request, id):
+    context = {
+        "user": Users.objects.get(id=id),
+        "post": Posts.objects.get(user_id=id)
+    }
+    return render(request, "belt/wall.html", context)
+
+def create_post(request, id):
+    Posts.objects.create(post=request.POST["posting"], user_id=id)
+    return redirect("/wall")
     

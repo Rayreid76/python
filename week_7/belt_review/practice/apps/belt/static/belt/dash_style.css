@@ -1,3 +1,15 @@
+.bar{
+    border-bottom: 1px darkgrey solid;
+    background: lightgray;
+}
+.bar h2{
+    display: inline-block;
+    margin: 10px 700px 5px 10px;
+}
+.bar p{
+    display: inline-block;
+    vertical-align: top;
+}
 table {
     border: 1px solid #1C6EA4;
     background-color: #EEEEEE;
@@ -11,9 +23,6 @@ table td, table th {
 }
 table tbody td {
     font-size: 13px;
-}
-table tr:nth-child(even) {
-    background: #D0E4F5;
 }
 table thead {
     background: #6FA7BC;
@@ -29,20 +38,3 @@ table thead th {
     text-align: center;
     border-left: 2px solid #82BCB9;
 }
-table thead th:first-child {
-    border-left: none;
-}
-  
-  table tfoot td {
-    font-size: 14px;
-  }
-  table tfoot .links {
-    text-align: right;
-  }
-  table tfoot .links a{
-    display: inline-block;
-    background: #1C6EA4;
-    color: #FFFFFF;
-    padding: 2px 8px;
-    border-radius: 5px;
-  }

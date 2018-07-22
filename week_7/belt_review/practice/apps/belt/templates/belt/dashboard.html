@@ -9,6 +9,10 @@
     <title>Dashboard</title>
 </head>
 <body>
+    <div class="bar">
+        <h2>Belt Dashboard</h2>
+        <p><a href="/wall/{{user.id}}">The Wall</a> | <a href="/logout">Sign Out</a></p>
+    </div>
     <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
     <div class="everyone">
         <table class="table">
@@ -25,7 +29,7 @@
                 {% for x in everyone %}
                 <tr>
                     <td>{{x.id}}</td>
-                    <td>{{x.last_name}}, {{x.first_name}}</td>
+                    <td><a href="">{{x.last_name}}, {{x.first_name}}</a></td>
                     <td>{{ x.email }}</td>
                     <td>{{ x.created_at }}</td>
                     <td>{{ x.user_level}}</td>
