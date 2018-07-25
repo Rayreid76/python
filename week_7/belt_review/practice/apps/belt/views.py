@@ -56,14 +56,38 @@ def logout(request):
     request.session.clear()
     return redirect("/login")
 
-def wall(request, id):
+def wall(request):
     context = {
-        "user": Users.objects.get(id=id),
-        "post": Posts.objects.get(user_id=id)
+        "user": Users.objects.get(id=request.session['id']),
+        "post": Posts.objects.filter(user_id=request.session['id']),
+        "wall": Posts.objects.all(),
+        "comment": Comments.objects.all()
     }
     return render(request, "belt/wall.html", context)
 
-def create_post(request, id):
-    Posts.objects.create(post=request.POST["posting"], user_id=id)
+def create_post(request):    
+    Posts.objects.create(post=request.POST["posting"], user_id=request.session['id'])
     return redirect("/wall")
-    
+
+def delete_post(request, id):
+    Posts.objects.get(id=id).delete()
+    return redirect("/wall")
+
+# the wall comments
+def make_comment(request, id):
+    Comments.objects.create(comment=request.POST["commenting"],user_id=request.session['id'], post_id=id)
+    return redirect("/wall")
+
+# edit user
+def profile(request):
+    context = {
+        "user": Users.objects.get(id=request.session['id']),
+    }
+    return render(request, "belt/update.html", context)
+
+def edit_user_name(request):
+    user = request.session['id']
+    fname = request.POST['fname']
+    lname = request.POST['lname']
+    email = request.POST['email']
+    return HttpResponse("edit data")

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update</title>
+</head>
+<body>
+    <div class="bar">
+        <h2>Belt Dashboard</h2>
+        <p><a href="/wall">The Wall</a> | <a href="/profile">Profile</a> | <a href="/logout">Sign Out</a></p>
+    </div>
+    <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+    <div class="name_email">
+        <fieldset>
+            <legend>Edit Information</legend>
+            <form action="/edit_user_name" method="post">
+                {% csrf_token %}
+                <p>First Name:</p>
+                <input type="text" name="fname" placeholder="Enter">
+                <p>last Name:</p>
+                <input type="text" name="lname" placeholder="Enter">
+                <p>Emial:</p>
+                <input type="text" name="email" placeholder="Enter">
+                <input type="submit" value="Update">
+            </form>
+        </fieldset>
+    </div>
+    <div class="password">
+            <fieldset>
+                <legend>Edit Password</legend>
+                <form action="/edit_user_password" method="post">
+                    {% csrf_token %}
+                    <p>Password:</p>
+                    <input type="text" name="password" placeholder="Enter">
+                    <p>Confirm Password:</p>
+                    <input type="text" name="cpassword" placeholder="Enter">
+                    <input type="submit" value="Update">
+                </form>
+            </fieldset>
+        </div>
+</body>
+</html>

@@ -4,27 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'belt/wall_style.css' %}" type="text/css">
     <title>The Wall</title>
 </head>
 <body>
     <div class="bar">
         <h2>Belt Dashboard</h2>
-        <p><a href="/dashboard">Dashboard</a> | <a href="/logout">Sign Out</a></p>
+        <p><a href="/dashboard">Dashboard</a> | <a href="/profile">Profile</a> | <a href="/logout">Sign Out</a></p>
     </div>
     <h1>{{user.first_name}}'s wall</h1>
     
     <div class="posting">
         <h3>Post</h3>
-        <form action="create_post/{{user.id}}" method="post">
+        <form action="/create_post" method="post">
             {% csrf_token %}
-            <input type="text" name="posting" placeholder="Place your Post">
+            <textarea name="posting" id="posting_area" cols="30" rows="5"></textarea>
             <input type="submit" value="Post">
         </form>
     </div>
     <div class="posted">
-        <h3>History</h3>
-        <textarea name="posted" cols="50" rows="5">{{post.post}}</textarea>
-        <p>Posted at {{post.created_at}}</p>
+        <div class="my_post">    
+            <h3>History</h3>
+            <h3>{{user.first_name}}, your posts.</h3>
+            {% for x in post%}
+                <p>{{x.post}}</p>
+                <p>Posted at: {{x.created_at}}</p>
+                <a href="/delete_post/{{x.id}}">Remove Post</a>
+                <div id="comments">
+                    <h3>Comments</h3>
+                    {% for l in comment %}
+                        {% if l.post_id == x.id %}
+                            <p>{{l.comment}}</p>
+                            <p>Posted at: {{l.created_at}}</p>
+                        {% endif %}    
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="other_post">
+            <h3>Other posts</h3>
+            {% for y in wall %}
+                <p>{{y.post}}</p>
+                <p>Posted at {{y.created_at}}</p>
+                <form action="/make_comment/{{y.id}}" id="{{y.id}}" method="post">
+                    {% csrf_token %}
+                    <textarea name="commenting" id="{{ y.id }}" cols="25" rows="4"></textarea>
+                    <input type="submit" value="Comment">
+                </form>
+                <div id="comments">
+                    <h3>Comments</h3>
+                    {% for l in comment %}
+                        {% if l.post_id == y.id %}
+                            <p>{{l.comment}}</p>
+                            <p>Posted at: {{l.created_at}}</p>
+                        {% endif %}    
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
     
 </body>

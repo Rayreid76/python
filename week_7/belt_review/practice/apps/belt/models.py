@@ -10,33 +10,24 @@ import bcrypt
 class userManage(models.Manager):
     def userValidation(self, fname, lname, email, password, cpassword):
         errors = []
-        if len(fname) <= 3:
-            
+        if len(fname) <= 3:            
             errors.append("Error first name is to short")
-        elif fname.isalpha() == False:
-            
+        elif fname.isalpha() == False:            
             errors.append("Error only letters")
-        if len(lname) <= 3:
-            
+        if len(lname) <= 3:            
             errors.append("Error last name is to short")
-        elif lname.isalpha() == False:
-            
+        elif lname.isalpha() == False:            
             errors.append("Error only letters")
-        if email != "":
-            
+        if email != "":            
             try:
                 validate_email(email)
-            except ValidationError as e:
-                
+            except ValidationError as e:                
                 errors.append("Error not valid email")
-        if len(password) < 8:
-            
+        if len(password) < 8:            
             errors.append("Error password needs to be 8 characters")
-        if cpassword != password:
-            
+        if cpassword != password:            
             errors.append("Error passward does not match")
-        else:
-            
+        else:            
             return errors
 
     def loginVal(self, email, password):
