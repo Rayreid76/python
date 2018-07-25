@@ -21,15 +21,12 @@ def record(request):
     email = request.POST["email"]
     password = request.POST["password"]
     cpassword = request.POST["cpassword"]
-    errors = Users.objects.userValidation(fname, lname, email, password, cpassword)
-    
+    errors = Users.objects.userValidation(fname, lname, email, password, cpassword)    
     if len(errors) == 0:
         hashed = bcrypt.hashpw('password'.encode(), bcrypt.gensalt())
-        Users.objects.create(first_name=fname, last_name=lname, email=email, password=hashed, user_level="normal")
-        
+        Users.objects.create(first_name=fname, last_name=lname, email=email, password=hashed, user_level="normal")        
         return redirect("/login")
-    else: #add message to html
-        
+    else: #add message to html        
         for message in errors:
             messages.error(request, message)
         return redirect("/register")
@@ -46,11 +43,15 @@ def signin(request):
             messages.error(request, message)
         return redirect("/login")
 def dashboard(request):
+    player = Users.objects.get(id=request.session['id'])
     context = {
         "user": Users.objects.get(id=request.session["id"]),
         "everyone": Users.objects.all()
     }
-    return render(request, "belt/dashboard.html", context)
+    if player.user_level == "admin":
+        return render(request, "belt/admindashboard.html", context)
+    else:
+        return render(request, "belt/dashboard.html", context)
 
 def logout(request):
     request.session.clear()
@@ -90,4 +91,68 @@ def edit_user_name(request):
     fname = request.POST['fname']
     lname = request.POST['lname']
     email = request.POST['email']
-    return HttpResponse("edit data")
+    pulled = Users.objects.get(id = user)
+    if fname != "":
+        pulled.first_name=fname
+        pulled.save()
+    if lname != "":
+        pulled.last_name=lname
+        pulled.save()
+    if email != "":
+        pulled.email=email
+        pulled.save()
+    print pulled
+    return redirect("/dashboard")
+
+def edit_user_password(request):
+    password = request.POST['password']
+    cpassword = request.POST['cpassword']
+    user = request.session['id']
+    pulled = Users.objects.get(id=user)
+    if password == cpassword:
+        hashed = bcrypt.hashpw('password'.encode(), bcrypt.gensalt())
+        pulled.password = hashed
+        pulled.save()
+    else:
+        print "Error"
+    return redirect("/dashboard")
+# delete user
+def delete_user(request, id):
+    Users.objects.get(id=id).delete()
+    return redirect("/dashboard")
+
+def adminupdate(request, id):
+    context = {
+        "user": Users.objects.get(id = id)
+    }
+    return render(request, "belt/adminupdate.html", context)
+def edit_admin_name(request, id):
+    fname = request.POST['fname']
+    lname = request.POST['lname']
+    email = request.POST['email']
+    pulled = Users.objects.get(id = id)
+    if fname != "":
+        pulled.first_name=fname
+        pulled.save()
+    if lname != "":
+        pulled.last_name=lname
+        pulled.save()
+    if email != "":
+        pulled.email=email
+        pulled.save()
+    print pulled
+    return redirect("/dashboard")
+def edit_admin_password(request, id):
+    password = request.POST['password']
+    cpassword = request.POST['cpassword']
+    pulled = Users.objects.get(id=id)
+    if password == cpassword:
+        hashed = bcrypt.hashpw('password'.encode(), bcrypt.gensalt())
+        pulled.password = hashed
+        pulled.save()
+    else:
+        print "Error"
+    return redirect("/dashboard")
+
+def add_user(request):
+    return render(request, "belt/add_user.html")

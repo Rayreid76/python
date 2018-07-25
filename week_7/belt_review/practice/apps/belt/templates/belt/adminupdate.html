@@ -11,7 +11,7 @@
         <h2>Belt Dashboard</h2>
         <p><a href="/wall">The Wall</a> | <a href="/profile">Profile</a> | <a href="/logout">Sign Out</a></p>
     </div>
-    <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+    <h1>User {{user.first_name}} {{user.last_name}}</h1>
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -22,7 +22,7 @@
     <div class="name_email">
         <fieldset>
             <legend>Edit Information</legend>
-            <form action="/edit_user_name" method="post">
+            <form action="/edit_admin_name/{{user.id}}" method="post">
                 {% csrf_token %}
                 <p>First Name:</p>
                 <input type="text" name="fname" placeholder="Enter">
@@ -37,7 +37,7 @@
     <div class="password">
             <fieldset>
                 <legend>Edit Password</legend>
-                <form action="/edit_user_password" method="post">
+                <form action="/edit_admin_password/{{user.id}}" method="post">
                     {% csrf_token %}
                     <p>Password:</p>
                     <input type="text" name="password" placeholder="Enter">
